@@ -1,0 +1,11 @@
+<%= form_for @work do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :snippet %>
+    <%= f.text_area :snippet %>
+    <%= f.label :category_id %>
+    <%= f.collection_select :kind_id, Kind.all, :id, :language, {}, {class: "form-control"} %>
+
+  </div>
+<% end %>
