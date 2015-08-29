@@ -1,0 +1,18 @@
+<table class="table">
+  <tbody>
+    <% @kinds.each do |k| %>
+      <!-- <div><h3><%= "#{k.language} (" + "#{@works.where(['kind_id = ?', k.id]).count}" + ") Snippets" %></h3></div> -->
+      <!-- <tr>
+        <td>
+          <% text = "#{k.language} (" + "#{get_count(@works, k.id)}" + ") Snippets" %>
+          <%= link_to(text, works_path(kind_id: k.id)) %>
+        </td>
+      </tr> -->
+      <div class="box col-xs-12 col-sm-6 col-lg-3"><h1>
+        <% text = "#{k.language} (" + "#{get_count(@works, k.id)}" + ") Snippets" %>
+        <%= link_to(text, works_path(kind_id: k.id)) %>
+      </h1></div>
+
+    <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,7 @@
 <%= form_for @work, html: {class: "form-horizontal"} do |f| %>
   <div class="form-group">
     <%= f.label :category_id %>
-    <%= f.collection_select :kind_id, Kind.all, :id, :language, {}, {class: "form-control"} %>
+    <%= f.collection_select :kind_id, Kind.all.order(:language), :id, :language, {}, {class: "form-control"} %>
   </div>
   <div class="form-group">
     <%= f.label :title %>
@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
     <%= f.label :snippet %>
-    <%= f.text_area :snippet, class: "form-control" %>
+    <%= f.text_area :snippet, class: "form-control", rows: 15 %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
