@@ -8,7 +8,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      puts ">>>>>>>>>>>>>>> S A V E D !"
+      puts ">>>>>>>>>>>>>>> S A V E D ! #{work_params}"
       redirect_to root_path
     else
       # render :new
@@ -17,13 +17,14 @@ class WorksController < ApplicationController
 
   def show
     puts ">>>>>>>>>>>>>>>>> #{params}"
-    puts ">>>>>>>>>>>>>>>>> #{puts @work}"
+    puts ">>>>>>>>>>>>>>>>> #{@work}"
   end
 
   def index
-    @kind_list = Kind.all.order(:language)
+    # @kind_list = Kind.all.order(:language)
     @kind = params[:kind_id]
     @works = Work.all.where(["kind_id = ?", @kind])
+    puts ">>>>>>>>>>>>>>>>> #{@works}"
   end
 
   def edit
@@ -31,11 +32,14 @@ class WorksController < ApplicationController
   end
 
   def update
-
+    @work.update work_params
+    puts ">>>>>>>>>>>>>>>>>ww #{@works}"
+    redirect_to works_path(kind_id: @kind)
   end
 
   def destroy
-
+    @work.destroy
+    redirect_to works_path
   end
 
 

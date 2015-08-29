@@ -1,0 +1,9 @@
+<%= form_for @kind, html: {class: "form-horizontal"} do |k| %>
+  <div class="form-group">
+    <%= k.label :language %>
+    <%= k.text_field :language, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= k.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
