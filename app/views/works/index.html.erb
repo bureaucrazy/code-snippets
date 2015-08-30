@@ -15,15 +15,14 @@
         <td>
           <%#= collection_select :kind_id, Kind.all.order(:language), :id, :language, {}, {class: "form-control"} %>
           <select>
-            <option value="css">CSS</option>
-            <option value="ruby">Ruby</option>
-            <option value="html">HTML</option>
-            <option value="javascript">JavaScript</option>
+            <% @kinds_list.each do |k| %>
+              <option value="<%= k.id %>" <%= "selected" if k.id == w.kind_id %>><%= k.language %></option>
+            <% end %>
           </select>
         </td>
         <td>
           <% text = "#{w.title}" %>
-          <%= link_to(text, root_path) %>          
+          <%= link_to(text, work_path(w)) %>
         </td>
         <td>
           <% text = "#{w.snippet}" %>

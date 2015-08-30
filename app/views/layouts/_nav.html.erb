@@ -1,9 +1,10 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "Code Snippets", root_path, class: "navbar-brand" %>
+      <%= link_to "Code Snippets", kinds_path, class: "navbar-brand" %>
       <ul class="nav navbar-nav">
-        <li><%#= link_to "Kinds", kinds_path %></li>
+        <li><%= link_to "All Snippets", works_path %></li>
+        <li><%= link_to "New Kind", new_kind_path %></li>
         <li><%= link_to "New Work", new_work_path %></li>
       </ul>
     </div>

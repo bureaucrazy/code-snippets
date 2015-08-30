@@ -1,22 +1,17 @@
-<table class="table">
-  <tbody>
-    <% @kinds.each do |k| %>
-      <!-- <div><h3><%= "#{k.language} (" + "#{@works.where(['kind_id = ?', k.id]).count}" + ") Snippets" %></h3></div> -->
-      <!-- <tr>
-        <td>
-          <% text = "#{k.language} (" + "#{get_count(@works, k.id)}" + ") Snippets" %>
-          <%= link_to(text, works_path(kind_id: k.id)) %>
-        </td>
-      </tr> -->
-      <div class="box col-xs-12 col-sm-6 col-lg-3"><h1>
-        <% text = "#{k.language} (" + "#{get_count(@works, k.id)}" + ") Snippets" %>
-        <%= link_to(text, works_path(kind_id: k.id)) %>
-      </h1></div>
-    <% end %>
+<div class="box col-xs-12 col-sm-6 col-lg-3">
+  <p class="quintuple-size">
+    <%= link_to("[ + ]", new_kind_path()) %>
+  </p>
+</div>
 
-    <div class="box col-xs-12 col-sm-6 col-lg-3"><h1>
-      <% text = "+" %>
-      <%= link_to(text, new_kind_path()) %>
-    </h1></div>
-  </tbody>
-</table>
+<% @kinds.each do |k| %>
+  <div class="box col-xs-12 col-sm-6 col-lg-3" style="background-color:#<%= get_random_color %>">
+    <p class="triple-size">
+      <%= link_to(kind_path(k)) do %>
+        <%= "#{k.language}" %>
+        <br />
+        <%= "[ " + "#{get_count(@works, k.id)}" + " ]" %>
+      <% end %>
+    </p>
+  </div>
+<% end %>

@@ -6,6 +6,10 @@ class KindsController < ApplicationController
     @kinds = Kind.all.order(:language)
   end
 
+  def show
+
+  end
+
   def new
     @kind = Kind.new
   end
@@ -13,12 +17,17 @@ class KindsController < ApplicationController
   def create
     @kind = Kind.new(kind_params)
     @kind.save
-    redirect_to root_path
+    redirect_to kinds_path
   end
 
   def update
     @kind.update kind_params
-    redirect_to root_path
+    redirect_to kinds_path
+  end
+
+  def destroy
+    @kind.destroy
+    redirect_to kinds_path
   end
 
   private
