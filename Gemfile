@@ -36,6 +36,7 @@ gem "faker"
 gem "cowsay"
 gem "bootstrap-sass"
 gem "kaminari"
+gem "coderay"
 
 group :development, :test do
   gem "interactive_editor"

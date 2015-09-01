@@ -1,3 +1,9 @@
+<script>
+var enableUpdate = function (ctrlId) {
+  document.getElementById("workUpdate-" + ctrlId).disabled = false;
+}
+</script>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,7 +20,7 @@
       <tr>
         <td>
           <%#= collection_select :kind_id, Kind.all.order(:language), :id, :language, {}, {class: "form-control"} %>
-          <select>
+          <select id="workSelect-<%= w.id %>", onchange="enableUpdate(<%= w.id %>)">
             <% @kinds_list.each do |k| %>
               <option value="<%= k.id %>" <%= "selected" if k.id == w.kind_id %>><%= k.language %></option>
             <% end %>
@@ -26,8 +32,10 @@
         </td>
         <td>
           <% text = "#{w.snippet}" %>
-          <span title="<%= text.first(800) %>">
-            <%= link_to "#{text.first(50)}...", work_path(w) %>
+          <!-- <span title="<%= text.first(800) %>"> -->
+            <!-- <%= link_to "#{text.first(50)}...", work_path(w) %> -->
+            <span title="<%= truncate(text, length: 800, separator: ' ') %>">
+            <%= link_to truncate(text, separator: ' '), work_path(w) %>
           </span>
         </td>
         <td>
@@ -40,6 +48,8 @@
           <%= link_to "Edit", edit_work_path(w), class: "btn btn-info" %>
           <%= link_to "Delete", work_path(w), method: :delete,
           data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+          <%= link_to "Update", edit_work_path(w), method: :patch,
+          class: "btn btn-disabled" %>
         </td>
       </tr>
     <% end %>
